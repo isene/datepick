@@ -1,0 +1,34 @@
+*.gem
+*.rbc
+/.config
+/coverage/
+/InstalledFiles
+/pkg/
+/spec/reports/
+/spec/examples.txt
+/test/tmp/
+/test/version_tmp/
+/tmp/
+
+# rspec failure tracking
+.rspec_status
+
+# Used by dotenv library to load environment variables.
+.env
+
+# Ignore Byebug command history file.
+.byebug_history
+
+## Specific to RubyGems:
+*.gem
+
+# unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
+.rvmrc
+
+# Used by RuboCop. Remote config files pulled in from inherit_from directive.
+.rubocop-https?--*
+
+# Bundler
+vendor/
+.bundle/
+Gemfile.lock
