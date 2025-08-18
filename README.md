@@ -1,5 +1,11 @@
 # Datepick - Interactive Terminal Date Picker
 
+[![Gem Version](https://badge.fury.io/rb/datepick.svg)](https://badge.fury.io/rb/datepick)
+[![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=flat&logo=ruby&logoColor=white)](https://www.ruby-lang.org/)
+[![License](https://img.shields.io/badge/License-Public%20Domain-brightgreen.svg)](https://unlicense.org/)
+[![GitHub stars](https://img.shields.io/github/stars/isene/datepick.svg)](https://github.com/isene/datepick/stargazers)
+[![Stay Amazing](https://img.shields.io/badge/Stay-Amazing-blue.svg)](https://isene.org)
+
 A powerful, interactive terminal date picker built with Ruby and rcurses. Features vim-style navigation, configurable date formats, multiple month views, and extensive keyboard shortcuts. Perfect for shell scripts and command-line workflows that need date selection.
 
 ## Features
