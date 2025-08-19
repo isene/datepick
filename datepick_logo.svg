@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect x="0" y="0" width="200" height="200" fill="#f5f5f5"/>
+  
+  <!-- Calendar base -->
+  <rect x="40" y="50" width="120" height="100" rx="5" fill="#fff" stroke="#333" stroke-width="2"/>
+  
+  <!-- Calendar header -->
+  <rect x="40" y="50" width="120" height="25" rx="5" fill="#CC342D"/>
+  <rect x="40" y="65" width="120" height="10" fill="#CC342D"/>
+  
+  <!-- Month/Year text -->
+  <text x="100" y="68" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="bold">DECEMBER</text>
+  
+  <!-- Calendar grid -->
+  <g font-family="monospace" font-size="10" fill="#666" text-anchor="middle">
+    <!-- Days of week -->
+    <text x="55" y="88" font-weight="bold">S</text>
+    <text x="72" y="88" font-weight="bold">M</text>
+    <text x="89" y="88" font-weight="bold">T</text>
+    <text x="106" y="88" font-weight="bold">W</text>
+    <text x="123" y="88" font-weight="bold">T</text>
+    <text x="140" y="88" font-weight="bold">F</text>
+    <text x="157" y="88" font-weight="bold">S</text>
+    
+    <!-- Date numbers -->
+    <text x="55" y="105">1</text>
+    <text x="72" y="105">2</text>
+    <text x="89" y="105">3</text>
+    <text x="106" y="105">4</text>
+    <text x="123" y="105">5</text>
+    <text x="140" y="105">6</text>
+    <text x="157" y="105">7</text>
+    
+    <text x="55" y="120">8</text>
+    <text x="72" y="120">9</text>
+    <text x="89" y="120">10</text>
+    <text x="106" y="120">11</text>
+    <text x="123" y="120">12</text>
+    <text x="140" y="120">13</text>
+    <text x="157" y="120">14</text>
+    
+    <text x="55" y="135">15</text>
+    <text x="72" y="135">16</text>
+    <text x="89" y="135">17</text>
+    <text x="106" y="135">18</text>
+    <text x="123" y="135">19</text>
+    <text x="140" y="135">20</text>
+    <text x="157" y="135">21</text>
+  </g>
+  
+  <!-- Selected date circle animation -->
+  <circle cx="89" cy="118" r="10" fill="none" stroke="#CC342D" stroke-width="2">
+    <animate attributeName="r" values="10;12;10" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="stroke-width" values="2;3;2" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Rofi-style selection indicator -->
+  <rect x="35" y="110" width="130" height="15" fill="#CC342D" opacity="0.2">
+    <animate attributeName="y" values="95;110;125;110;95" dur="4s" repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- Ruby gem -->
+  <g transform="translate(30, 30) scale(0.25)">
+    <path d="M -20 -10 L 20 -10 L 30 0 L 20 10 L -20 10 L -30 0 Z" fill="#CC342D" opacity="0.6"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="100" y="170" font-family="monospace" font-size="18" fill="#333" text-anchor="middle" font-weight="bold">datepick</text>
+  <text x="100" y="185" font-family="monospace" font-size="10" fill="#666" text-anchor="middle">Terminal Calendar Picker</text>
+</svg>

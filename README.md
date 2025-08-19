@@ -6,7 +6,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/isene/datepick.svg)](https://github.com/isene/datepick/stargazers)
 [![Stay Amazing](https://img.shields.io/badge/Stay-Amazing-blue.svg)](https://isene.org)
 
-A powerful, interactive terminal date picker built with Ruby and rcurses. Features vim-style navigation, configurable date formats, multiple month views, and extensive keyboard shortcuts. Perfect for shell scripts and command-line workflows that need date selection.
+<img src="datepick_logo.svg" align="left" width="150" height="150"> A powerful, interactive terminal date picker built with Ruby and rcurses. Features vim-style navigation, configurable date formats, multiple month views, and extensive keyboard shortcuts. Perfect for shell scripts and command-line workflows that need date selection.
 
 ## Features
 
