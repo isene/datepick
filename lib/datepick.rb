@@ -41,8 +41,10 @@ class DatePicker
     @current_month = Date.today
     @config_mode = false
     @config_selected = 0
-    @screen_w = `tput cols`.to_i
-    @screen_h = `tput lines`.to_i
+    @screen_w = (`tput cols`.to_i rescue 0)
+    @screen_h = (`tput lines`.to_i rescue 0)
+    @screen_w = 80 if @screen_w < 1
+    @screen_h = 24 if @screen_h < 1
     
     # Initialize panes
     @main_pane = Rcurses::Pane.new(1, 1, @screen_w, @screen_h - 4, nil, nil)
@@ -115,7 +117,7 @@ class DatePicker
     @help_pane.refresh
     
     # Update status
-    status_text = "Selected: #{@selected_date.strftime(@config['date_format'])}".fg(@config['colors']['selected'])
+    status_text = "Selected: #{safe_strftime(@selected_date, @config['date_format'])}".fg(@config['colors']['selected'])
     @status_pane.text = status_text
     @status_pane.refresh
   end
@@ -323,7 +325,7 @@ class DatePicker
       @prev_content = "" # Force refresh
     when 'ENTER'
       Rcurses.cleanup!
-      puts @selected_date.strftime(@config['date_format'])
+      puts safe_strftime(@selected_date, @config['date_format'])
       exit
     when 'LEFT', 'h', 'H'
       @selected_date = @selected_date.prev_day
@@ -421,13 +423,22 @@ class DatePicker
   def handle_config_edit
     case @config_selected
     when 0 # Date format
-      format_help = DATE_FORMATS.map { |k, v| "#{k}: #{Date.today.strftime(v)}" }.join(" | ")
+      format_help = DATE_FORMATS.map { |k, v| "#{k}: #{safe_strftime(Date.today, v)}" }.join(" | ")
       new_format = get_input_with_help("Date format", @config['date_format'], format_help)
       # Check if user entered a number for quick format selection
       if new_format && DATE_FORMATS[new_format]
         @config['date_format'] = DATE_FORMATS[new_format]
       elsif new_format && !new_format.empty?
-        @config['date_format'] = new_format
+        # Validate the custom format string before accepting it
+        begin
+          result = Date.today.strftime(new_format)
+          # Must produce at least one digit (any useful date format does)
+          if result.match?(/\d/)
+            @config['date_format'] = new_format
+          end
+        rescue ArgumentError
+          # Invalid format string; keep the old one
+        end
       end
       @prev_content = ""  # Force refresh to show new value
     when 1 # Months before
@@ -493,6 +504,12 @@ class DatePicker
     
     # Return the result (ask already returns the text)
     result.strip
+  end
+
+  def safe_strftime(date, fmt)
+    date.strftime(fmt)
+  rescue ArgumentError
+    date.strftime('%Y-%m-%d') + ' [invalid format]'
   end
 
   def update_current_month
