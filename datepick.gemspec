@@ -1,13 +1,13 @@
 Gem::Specification.new do |s|
   s.name        = 'datepick'
-  s.version     = '1.1.1'
+  s.version     = '1.1.2'
   s.licenses    = ['Unlicense']
   s.summary     = "Datepick - Interactive Terminal Date Picker"
   s.description = "A powerful interactive terminal date picker built with rcurses. Features vim-style navigation, configurable date formats, multiple month views, and extensive keyboard shortcuts. Perfect for shell scripts and command-line workflows that need date selection. Version 1.1.1: Add date format validation and terminal size fallback."
   s.authors     = ["Geir Isene"]
   s.email       = 'g@isene.com'
   s.files       = ["bin/datepick", "lib/datepick.rb", "README.md"]
-  s.add_runtime_dependency 'rcurses', '~> 6.0'
+  s.add_runtime_dependency 'rcurses', '~> 7.0'
   s.executables << 'datepick'
   s.homepage    = 'https://isene.com/'
   s.metadata    = { "source_code_uri" => "https://github.com/isene/datepick" }

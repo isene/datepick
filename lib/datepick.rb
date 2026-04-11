@@ -170,7 +170,7 @@ class DatePicker
       month_str = month_date.strftime("%B %Y")
       # Highlight current month with bold and underline
       if month_date.year == Date.today.year && month_date.month == Date.today.month
-        month_str = month_str.fg(@config['colors']['month']).b.u
+        month_str = month_str.fg(@config['colors']['month']).bd.ul
       else
         month_str = month_str.fg(@config['colors']['month'])
       end
@@ -184,9 +184,9 @@ class DatePicker
       days = @config['week_starts_monday'] ? %w[Mo Tu We Th Fr Sa Su] : %w[Su Mo Tu We Th Fr Sa]
       days.each_with_index do |day, idx|
         # Use darker colors for day headers and make them bold
-        color = ((@config['week_starts_monday'] && idx >= 5) || (!@config['week_starts_monday'] && (idx == 0 || idx == 6))) ? 
+        color = ((@config['week_starts_monday'] && idx >= 5) || (!@config['week_starts_monday'] && (idx == 0 || idx == 6))) ?
                 88 : 244  # Dark red for weekends, dark gray for weekdays
-        day_header_line += day.fg(color).b + " "
+        day_header_line += day.fg(color).bd + " "
       end
       day_header_line += " " # Extra space between months
     end
@@ -207,9 +207,9 @@ class DatePicker
             
             # Apply styling
             if date == @selected_date
-              day_str = day_str.fb(@config['colors']['selected'], 236).b
+              day_str = day_str.fb(@config['colors']['selected'], 236).bd
             elsif date == Date.today
-              day_str = day_str.fg(@config['colors']['today']).b
+              day_str = day_str.fg(@config['colors']['today']).bd
             elsif date.saturday? || date.sunday?
               day_str = day_str.fg(@config['colors']['weekend'])
             else
@@ -280,7 +280,7 @@ class DatePicker
     
     lines = []
     lines << ""
-    lines << "Configuration".fg(@config['colors']['year']).b
+    lines << "Configuration".fg(@config['colors']['year']).bd
     lines << ""
     
     config_items.each_with_index do |(label, value), idx|
